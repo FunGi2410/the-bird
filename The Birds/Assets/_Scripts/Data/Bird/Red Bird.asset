@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824b0e49f6a0e984e90bf1973746278c, type: 3}
+  m_Name: Red Bird
+  m_EditorClassIdentifier: 
+  birdName: 
+  timming: 20
+  price: 100
+  fireRate: 1
+  damage: 10
+  health: 30
+  bulletPrefab: {fileID: 2381777494911475866, guid: 671c71b477a73f441ad8496bf669ba07, type: 3}
+  speedMoveBullet: 15
+  bulletType: 0
