@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[Serializable]
 public class LevelData
 {
     public int curNumberLevel;
