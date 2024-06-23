@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        ResumeGame();
     }
 
     

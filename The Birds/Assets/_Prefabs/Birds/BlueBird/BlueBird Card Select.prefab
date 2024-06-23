@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5978898516894778253, guid: 17c558ddb31742c42894aa507b18c308, type: 3}
+  m_Sprite: {fileID: 1111546806721587337, guid: 0c6b4087be1c8984989b77955f1cc287, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -128,8 +128,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectDrag: {fileID: 0}
-  cardInBar: {fileID: 0}
+  cardInBar: {fileID: 5426247186635282780, guid: 4fae362bedf56ac47a8b29f5dba5fb99, type: 3}
   canvas: {fileID: 0}
+  isChoosed: 0
+  isUnlocked: 0
 --- !u!1 &5426247187835739698
 GameObject:
   m_ObjectHideFlags: 0

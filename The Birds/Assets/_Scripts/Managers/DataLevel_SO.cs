@@ -9,5 +9,10 @@ public class DataLevel_SO : ScriptableObject
     [SerializeField] private List<EnemySpawnerLevel_SO> enemySpawnerLevelSO;
 
     public int CurLevel { get => curLevel; set => curLevel = value; }
-    public List<EnemySpawnerLevel_SO> EnemySpawnerLevelSO { get => enemySpawnerLevelSO; }
+    //public List<EnemySpawnerLevel_SO> EnemySpawnerLevelSO { get => enemySpawnerLevelSO; }
+
+    public List<EnemySpawnerLevel_SO> GetEnemySpawnerLevelSO()
+    {
+        return enemySpawnerLevelSO;
+    }
 }

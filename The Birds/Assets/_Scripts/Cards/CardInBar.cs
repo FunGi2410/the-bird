@@ -2,9 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using DG.Tweening;
+using System.Threading.Tasks;
 
 public class CardInBar : MonoBehaviour, IPointerDownHandler
 {
+    BarManager barManager;
     public float speed;
     public Transform posCardSelect;
 
@@ -14,27 +17,31 @@ public class CardInBar : MonoBehaviour, IPointerDownHandler
 
     [SerializeField] private GameObject cardInGame;
 
-    public static UnityAction ChangePosCard;
+    public static UnityAction LineUpCardAction;
 
-    private void Start()
+    private void Awake()
     {
-        StartCoroutine(MoveToTarget(InBarManager.Instance.targetPosInBars[InBarManager.Instance.targetPosInBars.Count - 1].transform));
-        InBarManager.Instance.AddTargetPos();
-
+        print("awake");
+        this.barManager = GameObject.FindGameObjectWithTag("BarManager").GetComponent<BarManager>();
         this.canvas = GameObject.FindGameObjectWithTag("Canvas");
 
         GameManager.startGame += this.DesCardBarAndInitCardGame;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    private void Start()
+    {
+        // Move to empty slot in bar
+        MoveToTarget(this.barManager.targetPosInBars[this.barManager.IndexPosInBar]);
+        this.barManager.IndexPosInBar++;
+    }
+
+    async public void OnPointerDown(PointerEventData eventData)
     {
         if (this.isReturn) return;
         this.isReturn = true;
 
-        Destroy(InBarManager.Instance.targetPosInBars[InBarManager.Instance.targetPosInBars.Count - 1]);
-        InBarManager.Instance.targetPosInBars.RemoveAt(InBarManager.Instance.targetPosInBars.Count - 1);
-        
-        StartCoroutine(MoveToTarget(this.posCardSelect));
+        await MoveReturn(this.posCardSelect);
+        this.barManager.IndexPosInBar--;
     }
 
     public void DesCardBarAndInitCardGame()
@@ -58,12 +65,35 @@ public class CardInBar : MonoBehaviour, IPointerDownHandler
         ObjectPoolManager.instance.PooledObject(bulletInfo);
     }
 
-    public void MoveEvent(Transform target)
+    public void MoveToTarget(Transform posTarget)
     {
-        StartCoroutine(MoveToTarget(target));
+        transform.DOMove(posTarget.position, 0.5f);
+        //transform.position = posTarget.position;
     }
 
-    IEnumerator MoveToTarget(Transform posTarget)
+    async Task MoveReturn(Transform posTarget)
+    {
+        MoveToTarget(posTarget);
+        this.barManager.selectedCards.Remove(this.gameObject);
+        LineUpCardAction?.Invoke();
+        await Task.Delay(500);
+        
+        if (this.isReturn)
+        {
+            GameManager.startGame -= this.DesCardBarAndInitCardGame;
+            Destroy(this.gameObject);
+            
+            
+            this.posCardSelect.GetComponent<CardSelect>().SetStateCard();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.startGame -= this.DesCardBarAndInitCardGame;
+    }
+
+    /*IEnumerator MoveToTarget(Transform posTarget)
     {
         while (true)
         {
@@ -75,8 +105,8 @@ public class CardInBar : MonoBehaviour, IPointerDownHandler
                 {
                     Destroy(this.gameObject);
                     GameManager.startGame -= this.DesCardBarAndInitCardGame;
-                    InBarManager.Instance.selectedCards.Remove(this.gameObject);
-                    ChangePosCard?.Invoke();
+                    this.barManager.selectedCards.Remove(this.gameObject);
+                    //ChangePosCard?.Invoke();
 
                     this.posCardSelect.GetComponent<CardSelect>().SetStateCard();
                 }
@@ -87,5 +117,5 @@ public class CardInBar : MonoBehaviour, IPointerDownHandler
 
             yield return new WaitForSeconds(0.01f);
         }
-    }
+    }*/
 }

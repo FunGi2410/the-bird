@@ -1,6 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public class LevelData
+{
+    public int curNumberLevel;
+
+    public LevelData(LevelManager level)
+    {
+        this.curNumberLevel = level.CurNumberLevel;
+    }
+}
+
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private int curNumberLevel;
@@ -12,7 +22,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        this.LoadData();
+        //this.LoadData();
 
         this.rewardCard = GameObject.FindGameObjectWithTag("RewardCard").GetComponent<RewardCard>();
         this.playerManager = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerManager>();
@@ -25,17 +35,21 @@ public class LevelManager : MonoBehaviour
     public void WinLevel()
     {
         // Init reward card
+        // Get card base on Level
         GameObject rewardCardIntance = Instantiate(this.rewardCard.GetRewardCard(this.CurNumberLevel), this.canvasTransform);
         rewardCardIntance.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+
         // Unlock card in collection
         this.playerManager.UnlockNewPlantCard(this.CurNumberLevel);
+
         // Increase Level Number
         this.dataLevelSO.CurLevel = ++this.curNumberLevel;
     }
 
-    void LoadData()
+    public void LoadData(LevelData data)
     {
-        this.curNumberLevel = this.DataLevelSO.CurLevel;
+        //this.curNumberLevel = this.DataLevelSO.CurLevel;
+        this.curNumberLevel = data.curNumberLevel;
     }
 
     public void OnNextLevel()

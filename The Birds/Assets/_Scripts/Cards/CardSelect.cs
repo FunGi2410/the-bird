@@ -5,32 +5,39 @@ using UnityEngine.UI;
 public class CardSelect : MonoBehaviour, IPointerDownHandler
 {
     public GameObject objectDrag;
-
     public GameObject cardInBar;
-
     public GameObject canvas;
+    private BarManager barManager;
 
-    bool isChoosed = false;
-    private bool isUnlocked;
+    [SerializeField] bool isChoosed = false;
+    [SerializeField] private bool isUnlocked;
+
 
     public bool IsUnlocked { get => isUnlocked; set => isUnlocked = value; }
+    
 
-    private void Start()
+    private void Awake()
     {
+        this.barManager = GameObject.FindGameObjectWithTag("BarManager").GetComponent<BarManager>();
         this.canvas = GameObject.FindGameObjectWithTag("Canvas");
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (InBarManager.Instance.targetPosInBars.Count <= InBarManager.Instance.curMaxSlot && !this.isChoosed)
+        CreateCardInBar();
+    }
+
+    void CreateCardInBar()
+    {
+        if (this.barManager.IndexPosInBar < this.barManager.curMaxSlot && !this.isChoosed)
         {
             GameObject cardInBarInstance = Instantiate(this.cardInBar, this.canvas.transform);
             cardInBarInstance.transform.position = this.transform.position;
             cardInBarInstance.GetComponent<CardInBar>().posCardSelect = this.gameObject.transform;
 
-            InBarManager.Instance.selectedCards.Add(cardInBarInstance);
-            cardInBarInstance.name = "Card " + (InBarManager.Instance.selectedCards.Count).ToString();
-            
+            this.barManager.selectedCards.Add(cardInBarInstance);
+            cardInBarInstance.name = "Card " + (this.barManager.selectedCards.Count).ToString();
+
             this.SetStateCard();
         }
     }
