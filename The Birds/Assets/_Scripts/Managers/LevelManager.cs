@@ -24,8 +24,6 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        //this.LoadData();
-
         this.rewardCard = GameObject.FindGameObjectWithTag("RewardCard").GetComponent<RewardCard>();
         this.playerManager = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerManager>();
         this.canvasTransform = GameObject.FindGameObjectWithTag("Canvas").transform;
@@ -45,12 +43,18 @@ public class LevelManager : MonoBehaviour
         this.playerManager.UnlockNewPlantCard(this.CurNumberLevel);
 
         // Increase Level Number
-        this.dataLevelSO.CurLevel = ++this.curNumberLevel;
+        this.curNumberLevel++;
+        //this.dataLevelSO.CurLevel = this.curNumberLevel;
+        LevelDataHandler.instance.Save();
     }
-
+    
+    /*public void LoadDataSO()
+    {
+        // Load from Scriptable object
+        this.curNumberLevel = this.DataLevelSO.CurLevel;
+    }*/
     public void LoadData(LevelData data)
     {
-        //this.curNumberLevel = this.DataLevelSO.CurLevel;
         this.curNumberLevel = data.curNumberLevel;
     }
 

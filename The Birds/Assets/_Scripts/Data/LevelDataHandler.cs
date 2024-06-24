@@ -9,8 +9,11 @@ public class LevelDataHandler : DataHandler
 {
     LevelManager levelManager;
 
+    public static LevelDataHandler instance;
+
     private void Awake()
     {
+        instance = this;
         this.levelManager = GetComponent<LevelManager>();
 
         Load();
@@ -26,6 +29,7 @@ public class LevelDataHandler : DataHandler
             LevelData data = formatter.Deserialize(stream) as LevelData;
             this.levelManager.LoadData(data);
             stream.Close();
+            Debug.Log("Loaded");
         }
         else
         {
@@ -43,6 +47,7 @@ public class LevelDataHandler : DataHandler
 
         formatter.Serialize(stream, data);
         stream.Close();
+        Debug.Log("Saved");
     }
 
     private void OnApplicationQuit()

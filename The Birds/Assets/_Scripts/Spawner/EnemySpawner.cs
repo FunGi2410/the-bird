@@ -30,6 +30,7 @@ public class EnemySpawner : Spawner
     {
         this.levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         EnemyCtrl.OnEnemyDead += EnemyDead;
+
     }
     private void Start()
     {
@@ -49,7 +50,7 @@ public class EnemySpawner : Spawner
 
     void LoadEnemySpawnerData()
     {
-        print("Load enemy spawner");
+        //print("Load enemy spawner");
         this.enemyWaves = this.levelManager.DataLevelSO.GetEnemySpawnerLevelSO()[this.levelManager.CurNumberLevel].enemyWaves;
     }
 
@@ -100,5 +101,10 @@ public class EnemySpawner : Spawner
             return false;
         }
         return true;
+    }
+
+    private void OnDestroy()
+    {
+        EnemyCtrl.OnEnemyDead -= EnemyDead;
     }
 }
