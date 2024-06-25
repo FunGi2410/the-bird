@@ -51,7 +51,7 @@ public class EnemySpawner : Spawner
     void LoadEnemySpawnerData()
     {
         //print("Load enemy spawner");
-        this.enemyWaves = this.levelManager.DataLevelSO.GetEnemySpawnerLevelSO()[this.levelManager.CurNumberLevel].enemyWaves;
+        this.enemyWaves = this.levelManager.DataLevelSO.EnemySpawnerLevelSO[this.levelManager.CurNumberLevel].enemyWaves;
     }
 
     void EnemyDead()
