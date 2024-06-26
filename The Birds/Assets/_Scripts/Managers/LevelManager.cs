@@ -39,11 +39,12 @@ public class LevelManager : MonoBehaviour
         GameObject rewardCardIntance = Instantiate(this.rewardCard.GetRewardCard(this.CurNumberLevel), this.canvasTransform);
         rewardCardIntance.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
 
-        // Unlock card in collection
-        this.playerManager.UnlockNewPlantCard(this.CurNumberLevel);
-
         // Increase Level Number
         this.curNumberLevel++;
+
+        // Unlock card in collection
+        this.playerManager.UnlockNewPlantCard(this.CurNumberLevel);
+        
         //this.dataLevelSO.CurLevel = this.curNumberLevel;
         LevelDataHandler.instance.Save();
     }

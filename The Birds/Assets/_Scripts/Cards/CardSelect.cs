@@ -7,6 +7,7 @@ public class CardSelect : MonoBehaviour, IPointerDownHandler
     public GameObject objectDrag;
     public GameObject cardInBar;
     public GameObject canvas;
+    public GameObject lockObject;
     private BarManager barManager;
 
     [SerializeField] bool isChoosed = false;
@@ -20,10 +21,13 @@ public class CardSelect : MonoBehaviour, IPointerDownHandler
     {
         this.barManager = GameObject.FindGameObjectWithTag("BarManager").GetComponent<BarManager>();
         this.canvas = GameObject.FindGameObjectWithTag("Canvas");
+
+        this.SetUnlockStateCard();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!this.isUnlocked) return;
         CreateCardInBar();
     }
 
@@ -38,19 +42,29 @@ public class CardSelect : MonoBehaviour, IPointerDownHandler
             this.barManager.selectedCards.Add(cardInBarInstance);
             cardInBarInstance.name = "Card " + (this.barManager.selectedCards.Count).ToString();
 
-            this.SetStateCard();
+            this.SetChoosenStateCard();
         }
     }
 
-    public void SetStateCard()
+    public void SetUnlockStateCard()
+    {
+        this.lockObject.SetActive(!this.isUnlocked);
+        this.SetBlurCard(!this.isUnlocked);
+    }
+
+    public void SetChoosenStateCard()
     {
         this.isChoosed = !this.isChoosed;
+        SetBlurCard(isChoosed);
+    }
 
+    public void SetBlurCard(bool state)
+    {
         // Blur card when selected
         Image imgObj = this.gameObject.transform.GetChild(1).GetComponent<Image>();
         var tmpColor = imgObj.color;
 
-        if (!this.isChoosed) tmpColor.a = 1f;
+        if (state == false) tmpColor.a = 1f;
         else tmpColor.a = 0.3f;
         imgObj.color = tmpColor;
     }

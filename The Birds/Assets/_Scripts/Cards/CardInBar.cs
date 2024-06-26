@@ -84,7 +84,7 @@ public class CardInBar : MonoBehaviour, IPointerDownHandler
             Destroy(this.gameObject);
             
             
-            this.posCardSelect.GetComponent<CardSelect>().SetStateCard();
+            this.posCardSelect.GetComponent<CardSelect>().SetChoosenStateCard();
         }
     }
 

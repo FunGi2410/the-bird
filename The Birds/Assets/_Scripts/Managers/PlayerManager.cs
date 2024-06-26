@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
 
     public void UnlockNewPlantCard(int indexPlantCard)
     {
+        if (indexPlantCard >= this.birdCardCollection.Count) return;
         this.birdCardCollection[indexPlantCard].GetComponent<CardSelect>().IsUnlocked = true;
     }
 }
