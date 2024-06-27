@@ -7,7 +7,7 @@ public class EnemySpawner : Spawner
     private const int MAX_AMOUNT_SPAWNER_POS = 5;
 
     [SerializeField] private List<EnemyWaves> enemyWaves;
-    private int indexEnemy;
+    private int indexEnemy = 0;
     private int ranPosSpawner;
 
     float timer = 0f;
@@ -41,8 +41,9 @@ public class EnemySpawner : Spawner
     {
         if (GameManager.instance.CurTimerGame < this.startSpawnTime) return;
         this.timer += Time.deltaTime;
-        if (this.timer >= this.enemyWaves[indexEnemy].NextSpawnTime)
+        if (this.timer >= this.enemyWaves[indexWave].NextSpawnTime)
         {
+            print("aaaaaaaa");
             this.Spawn();
             this.timer = 0f;
         }

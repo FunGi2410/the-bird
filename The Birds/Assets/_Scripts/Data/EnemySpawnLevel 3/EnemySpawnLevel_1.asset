@@ -13,9 +13,5 @@ MonoBehaviour:
   m_Name: EnemySpawnLevel_1
   m_EditorClassIdentifier: 
   enemyWaves:
-  - enemies:
-    - amount: 1
-      enemyPrefab: {fileID: 4374877357773752056, guid: 632c8ca7758aa0e4c98d9225adfff08d, type: 3}
-      enemyID: 0
-      type: 2
+  - enemies: []
     nextSpawnTime: 1

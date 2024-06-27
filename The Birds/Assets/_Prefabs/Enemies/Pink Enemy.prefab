@@ -91,9 +91,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4374877357773752056}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 271eb044acb45f24f9455760fe1dd5b0, type: 2}
+  m_Controller: {fileID: 9100000, guid: b83dbb415f301024199de09a97e69775, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -164,14 +164,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 179642c998d1e574e8f654bd10e870dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 0
+  health: 0
   meleeEnemy_SO: {fileID: 11400000, guid: 624ef95b680b28247a6f5eff16d86bd3, type: 2}
-  maxHealth: 0
-  currentHealth: 0
-  distanceToPlayer: 0
   attackPoint: {fileID: 7941097459748986915}
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  isAttack: 0
 --- !u!223 &5513931308532904597
 Canvas:
   m_ObjectHideFlags: 0

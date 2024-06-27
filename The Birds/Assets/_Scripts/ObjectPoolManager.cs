@@ -6,7 +6,10 @@ public enum PoolObjectType
 {
     redBullet,
     wheat,
+    /*----------- Enemy type -----------*/
     orrangeEnemy,
+    pinkEnemy,
+    purpleEnemy,
     blackEnemy
 }
 

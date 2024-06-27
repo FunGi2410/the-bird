@@ -7,6 +7,6 @@ public class Enemy
 {
     public int amount;
     public GameObject enemyPrefab;
-    public EnemyID enemyID;
+    //public EnemyID enemyID;
     public PoolObjectType type;
 }
