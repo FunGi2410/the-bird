@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RangeBirdCtrl : BirdCtrl
 {
-    [SerializeField]
-    Transform muzzle;
+    [SerializeField] Transform muzzle;
 
     float nextTimeToFire = 0f;
     public Transform objectContainer;
@@ -14,8 +10,12 @@ public class RangeBirdCtrl : BirdCtrl
     [SerializeField] bool isAttack = false;
     Animator animator;
 
+    public PoolObjectType bulletType;
+    public GameObject bulletPrefab;
+
     protected override void Start()
     {
+        this.PoolBullet();
         base.Start();
         this.animator = GetComponent<Animator>();
     }
@@ -40,12 +40,20 @@ public class RangeBirdCtrl : BirdCtrl
         if (!isHaveEnemy) this.isAttack = false;
     }
 
+    void PoolBullet()
+    {
+        PoolInfo bulletInfo = new PoolInfo(this.bulletType, 1, this.bulletPrefab);
+        ObjectPoolManager.instance.objToPools.Add(bulletInfo);
+        ObjectPoolManager.instance.PooledObject(bulletInfo);
+    }
+
     public void CompletedAttackEvent(string mes)
     {
         if (mes.Equals("AttackAnimationEnded"))
         {
             this.animator.SetBool("IsAttack", false);
             this.InstanceBullet(this.muzzle);
+            AudioManager.Instance.Play("BirdFire");
         }
     }
 
@@ -53,7 +61,7 @@ public class RangeBirdCtrl : BirdCtrl
     {
         if (Time.time >= this.nextTimeToFire)
         {
-            this.nextTimeToFire = Time.time + (1f / this.rangeBirdSO.fireRate);
+            this.nextTimeToFire = Time.time + (1f / this.birdSO.fireRate);
             return true;
         }
         return false;
@@ -69,10 +77,11 @@ public class RangeBirdCtrl : BirdCtrl
 
     public GameObject InstanceBullet(Transform origin)
     {
-        GameObject projectile = ObjectPoolManager.instance.GetPoolObject(this.rangeBirdSO.bulletType);
-        projectile.transform.SetParent(origin.transform.parent.parent);
-        projectile.GetComponent<RectTransform>().anchoredPosition = gameObject.GetComponent<RectTransform>().anchoredPosition;
+        GameObject projectile = ObjectPoolManager.instance.GetPoolObject(this.bulletType);
+        //projectile.transform.SetParent(origin.transform.parent.parent);
+        projectile.transform.position = origin.position;
         projectile.SetActive(true);
+        
         return projectile;
     }
 }

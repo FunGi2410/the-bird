@@ -30,7 +30,6 @@ public class EnemySpawner : Spawner
     {
         this.levelManager = GameObject.FindGameObjectWithTag("LevelManager").GetComponent<LevelManager>();
         EnemyCtrl.OnEnemyDead += EnemyDead;
-
     }
     private void Start()
     {
@@ -43,7 +42,6 @@ public class EnemySpawner : Spawner
         this.timer += Time.deltaTime;
         if (this.timer >= this.enemyWaves[indexWave].NextSpawnTime)
         {
-            print("aaaaaaaa");
             this.Spawn();
             this.timer = 0f;
         }
@@ -72,6 +70,7 @@ public class EnemySpawner : Spawner
         if (this.CanSpawn())
         {
             // Active object
+            //Debug.Log("Enemy Spawned");
             GameObject enemyObj = InstanceObject(this.enemyWaves[indexWave].Enemies[this.indexEnemy].type);
 
             // Set position

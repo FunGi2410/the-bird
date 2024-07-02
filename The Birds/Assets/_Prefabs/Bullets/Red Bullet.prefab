@@ -111,7 +111,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -129,8 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50ef249bf8320f54996293b66b3e17a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletName: Red Bullet
-  rangeBirdSO: {fileID: 11400000, guid: e1628c990b64dcc4f93957eebca42d58, type: 2}
+  birdSO: {fileID: 11400000, guid: e1628c990b64dcc4f93957eebca42d58, type: 2}
+  speedMoveBullet: 15
+  bulletType: 1
   direction: {x: 1, y: 0}
 --- !u!1001 &7482756662208424736
 PrefabInstance:

@@ -6,7 +6,10 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
-    protected RangeBird_SO rangeBirdSO;
+    protected Bird_SO birdSO;
+
+    [SerializeField] private float speedMoveBullet;
+    public PoolObjectType bulletType;
 
     public Vector2 direction;
     Rigidbody2D myRigidbody2D;
@@ -26,7 +29,7 @@ public class Bullet : MonoBehaviour
 
     protected virtual void MoveToAttack()
     {
-        this.myRigidbody2D.MovePosition(this.myRigidbody2D.position + this.direction * this.rangeBirdSO.speedMoveBullet * Time.fixedDeltaTime);
+        this.myRigidbody2D.MovePosition(this.myRigidbody2D.position + this.direction * this.speedMoveBullet * Time.fixedDeltaTime);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -34,13 +37,17 @@ public class Bullet : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        this.timmer = 0f;
+    }
+
     protected virtual void OnDestroy()
     {
         this.timmer += Time.fixedDeltaTime;
-        if(this.timmer >= this.rangeBirdSO.timming)
+        if(this.timmer >= this.birdSO.timming)
         {
-            ObjectPoolManager.instance.CoolObject(gameObject, this.rangeBirdSO.bulletType);
+            ObjectPoolManager.instance.CoolObject(gameObject, this.bulletType);
         }
     }
-
 }

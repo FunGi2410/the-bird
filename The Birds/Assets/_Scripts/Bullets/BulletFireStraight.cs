@@ -12,9 +12,9 @@ public class BulletFireStraight : Bullet
             IDamageable damageableObject = collision.GetComponent<IDamageable>();
             if(damageableObject != null)
             {
-                damageableObject.TakeDame(this.rangeBirdSO.damage);
+                damageableObject.TakeDame(this.birdSO.damage);
             }
-            ObjectPoolManager.instance.CoolObject(gameObject, this.rangeBirdSO.bulletType);
+            ObjectPoolManager.instance.CoolObject(gameObject, this.bulletType);
         }
     }
 }

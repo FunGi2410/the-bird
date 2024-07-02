@@ -29,7 +29,7 @@ public class LevelDataHandler : DataHandler
             LevelData data = formatter.Deserialize(stream) as LevelData;
             this.levelManager.LoadData(data);
             stream.Close();
-            Debug.Log("Loaded");
+            //Debug.Log("Loaded");
         }
         else
         {

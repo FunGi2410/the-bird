@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1111546806721587337, guid: 0c6b4087be1c8984989b77955f1cc287, type: 3}
+  m_Sprite: {fileID: -7068613016846842766, guid: b2aa4dabd5098a44d9db709d0d3c77f6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -126,7 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39e278e2fcc8334da07c0ff3e8f11ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.7
   posCardSelect: {fileID: 0}
   canvas: {fileID: 0}
   cardInGame: {fileID: 5426247186635282780, guid: cfebfb88e150e8343a88af96e64d863d, type: 3}

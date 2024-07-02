@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1111546806721587337, guid: 0c6b4087be1c8984989b77955f1cc287, type: 3}
+  m_Sprite: {fileID: -7068613016846842766, guid: b2aa4dabd5098a44d9db709d0d3c77f6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -209,7 +209,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   lockObject: {fileID: 2543810634950868587}
   isChoosed: 0
-  isUnlocked: 0
+  isUnlocked: 1
 --- !u!1 &5426247187835739698
 GameObject:
   m_ObjectHideFlags: 0

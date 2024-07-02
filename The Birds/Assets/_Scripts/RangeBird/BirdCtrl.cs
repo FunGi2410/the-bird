@@ -5,11 +5,16 @@ using UnityEngine;
 public class BirdCtrl : LivingEntity
 {
     [SerializeField]
-    protected RangeBird_SO rangeBirdSO;
+    protected Bird_SO birdSO;
 
     protected virtual void Start()
     {
-        this.startingHealth = this.rangeBirdSO.health;
+        this.SetHealth();
+    }
+
+    protected void SetHealth()
+    {
+        this.startingHealth = this.birdSO.health;
         this.health = this.startingHealth;
     }
 

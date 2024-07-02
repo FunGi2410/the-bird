@@ -167,10 +167,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 0
   health: 0
-  rangeBirdSO: {fileID: 11400000, guid: e1628c990b64dcc4f93957eebca42d58, type: 2}
+  birdSO: {fileID: 11400000, guid: e1628c990b64dcc4f93957eebca42d58, type: 2}
   muzzle: {fileID: 8255775097508646458}
   objectContainer: {fileID: 5850131185351182928, guid: b06ce8edb24102c4aacec90e1155b932, type: 3}
   isAttack: 0
+  bulletType: 1
+  bulletPrefab: {fileID: 2381777494911475866, guid: 671c71b477a73f441ad8496bf669ba07, type: 3}
 --- !u!223 &-1619400146595719367
 Canvas:
   m_ObjectHideFlags: 0

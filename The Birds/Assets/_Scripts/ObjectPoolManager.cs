@@ -4,9 +4,11 @@ using UnityEngine;
 
 public enum PoolObjectType
 {
-    redBullet,
     wheat,
     /*----------- Enemy type -----------*/
+    redBullet,
+    blueBullet,
+    /*----------- Bullet type -----------*/
     orrangeEnemy,
     pinkEnemy,
     purpleEnemy,
@@ -26,7 +28,7 @@ public class PoolInfo
     public PoolObjectType type;
     public int amount;
     public GameObject prefab;
-    public List<GameObject> pools = new List<GameObject>();
+    public Queue<GameObject> pools = new Queue<GameObject>();
 }
 
 public class ObjectPoolManager : MonoBehaviour
@@ -50,19 +52,20 @@ public class ObjectPoolManager : MonoBehaviour
     private void Start()
     {
         foreach (PoolInfo info in objToPools)
+        {
+            info.pools = new Queue<GameObject>();
             PooledObject(info);
+        }
     }
 
     public GameObject GetPoolObject(PoolObjectType type)
     {
         PoolInfo poolSelected = GetPoolByType(type);
-        List<GameObject> pools = poolSelected.pools;
+        Queue<GameObject> pools = poolSelected.pools;
         GameObject objInstance = null;
         if(pools.Count > 0)
         {
-            int index = pools.Count - 1;
-            objInstance = pools[index];
-            pools.RemoveAt(index);
+            objInstance = pools.Dequeue();
         }
         else // expand obj
             objInstance = Instantiate(poolSelected.prefab, transform);
@@ -74,23 +77,29 @@ public class ObjectPoolManager : MonoBehaviour
         obj.SetActive(false);
 
         PoolInfo poolSelected = GetPoolByType(type);
-        List<GameObject> pools = poolSelected.pools;
+        Queue<GameObject> pools = poolSelected.pools;
+        
         if (!pools.Contains(obj))
-            pools.Add(obj);
+            pools.Enqueue(obj);
     }
 
     PoolInfo GetPoolByType(PoolObjectType type)
     {
+        Debug.Log("Type 2: " + type);
         foreach(PoolInfo info in objToPools)
             if (type == info.type)
+            {
+                //Debug.Log("Info Type: " + info.type);
                 return info;
+            }
+                
         return null;
     }
 
     public void PooledObject(PoolInfo objInfo)
     {
         for (int i = 0; i < objInfo.amount; ++i)
-            objInfo.pools.Add(CreateGobject(objInfo.prefab, transform));
+            objInfo.pools.Enqueue(CreateGobject(objInfo.prefab, transform));
     }
 
     GameObject CreateGobject(GameObject obj, Transform parrent)

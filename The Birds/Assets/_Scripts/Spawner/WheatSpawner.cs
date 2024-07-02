@@ -31,7 +31,7 @@ public class WheatSpawner : Spawner
     {
         // Active
         GameObject wheat = InstanceObject(PoolObjectType.wheat);
-
+        //Debug.Log("Wheat spawn");
         // Set position
         float ranPosX = Random.Range(-UIManager.instance.HalfWidthOfCanvas, UIManager.instance.HalfWidthOfCanvas);
         wheat.GetComponent<RectTransform>().anchoredPosition = new Vector2(ranPosX, UIManager.instance.HalfHeightOfCanvas);

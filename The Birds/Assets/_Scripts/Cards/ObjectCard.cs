@@ -16,12 +16,11 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
 
     [SerializeField] private Image fillTime;
 
-    [SerializeField] private RangeBird_SO rangeBirdSO;
+    [SerializeField] private Bird_SO birdSO;
 
     private RectTransform rectObjDrag;
 
     public bool IsTimming { get => isTimming; set => isTimming = value; }
-    public RangeBird_SO RangeBirdSO { get => rangeBirdSO; }
 
     private void Start()
     {
@@ -29,7 +28,7 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
         this.canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
 
         //time
-        this.maxTime = this.RangeBirdSO.timming;
+        this.maxTime = this.birdSO.timming;
     }
 
     private void Update()
@@ -39,7 +38,7 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
 
     private bool IsEnoughSunPrice()
     {
-        if(GameManager.instance.SunScore >= this.RangeBirdSO.price)
+        if(GameManager.instance.SunScore >= this.birdSO.price)
         {
             return true;
         }
@@ -72,11 +71,9 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
     public void OnPointerDown(PointerEventData eventData)
     {
         if (this.isTimming || !this.IsEnoughSunPrice()) return;
-        //print("On Clicked");
         this.objectDragInstance = Instantiate(this.objectDrag, this.canvas.transform);
         this.rectObjDrag = this.objectDragInstance.GetComponent<RectTransform>();
         this.rectObjDrag.anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
-        //this.objectDragInstance.transform.position = Input.mousePosition;
         this.objectDragInstance.GetComponent<ObjectDragging>().card = this;
 
         this.gameManager.draggingObj = this.objectDragInstance;
@@ -88,7 +85,7 @@ public class ObjectCard : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoi
         {
             this.isTimming = true;
             // update sun
-            GameManager.instance.SubSun(this.RangeBirdSO.price);
+            GameManager.instance.SubSun(this.birdSO.price);
         }
         this.gameManager.draggingObj = null;
         

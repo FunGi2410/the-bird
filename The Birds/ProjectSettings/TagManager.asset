@@ -13,6 +13,7 @@ TagManager:
   - PlayerManager
   - LevelManager
   - BarManager
+  - BirdCardReward
   layers:
   - Default
   - TransparentFX

@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53419e98067d8784d9ae2ac9c1f1a877, type: 3}
   m_Name: Data Level
   m_EditorClassIdentifier: 
-  curLevel: 0
   enemySpawnerLevelSO:
-  - {fileID: 11400000, guid: 3ed5ba640aa7e824da649229fb7c1ee6, type: 2}
+  - {fileID: 11400000, guid: 0ff70a3e7df20fd4fb0c918b63bafc57, type: 2}
   - {fileID: 11400000, guid: 28138cdf9da50d94790db8e17e259b9c, type: 2}
   - {fileID: 11400000, guid: c7963e5c60bb9bd4b8aa0c23c3565776, type: 2}
   - {fileID: 11400000, guid: 494d85c4dc6954741b8ba02aaffc556d, type: 2}

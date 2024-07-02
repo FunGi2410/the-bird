@@ -9,13 +9,13 @@ public class CardSelect : MonoBehaviour, IPointerDownHandler
     public GameObject canvas;
     public GameObject lockObject;
     private BarManager barManager;
+    
 
     [SerializeField] bool isChoosed = false;
     [SerializeField] private bool isUnlocked;
 
 
     public bool IsUnlocked { get => isUnlocked; set => isUnlocked = value; }
-    
 
     private void Awake()
     {

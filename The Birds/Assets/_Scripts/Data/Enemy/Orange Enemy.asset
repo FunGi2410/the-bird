@@ -15,9 +15,9 @@ MonoBehaviour:
   enemyName: Orange Enemy
   timming: 0
   enemyID: 0
-  type: 1
+  type: 3
   attackRange: 0.35
-  speedWalk: 0.5
+  speedWalk: 1
   fireRate: 1
   damage: 10
-  health: 30
+  health: 50

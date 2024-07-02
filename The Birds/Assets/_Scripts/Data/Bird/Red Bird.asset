@@ -9,15 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 824b0e49f6a0e984e90bf1973746278c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7aedc0bc50929d34baaca5185923a3a9, type: 3}
   m_Name: Red Bird
   m_EditorClassIdentifier: 
-  birdName: 
-  timming: 20
+  birdName: Red
+  timming: 5
   price: 100
   fireRate: 1
   damage: 10
   health: 30
-  bulletPrefab: {fileID: 2381777494911475866, guid: 671c71b477a73f441ad8496bf669ba07, type: 3}
-  speedMoveBullet: 15
-  bulletType: 0

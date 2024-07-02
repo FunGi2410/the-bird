@@ -8,6 +8,7 @@ public abstract class Spawner : MonoBehaviour
 
     public GameObject InstanceObject(PoolObjectType type)
     {
+        //Debug.Log("Type: " + type);
         GameObject obj = ObjectPoolManager.instance.GetPoolObject(type);
         obj.SetActive(true);
         return obj;

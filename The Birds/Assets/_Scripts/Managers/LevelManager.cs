@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class LevelData
 {
     public int curNumberLevel;
-
+    public int amountUnlockedCard;
     public LevelData(LevelManager level)
     {
         this.curNumberLevel = level.CurNumberLevel;
+        this.amountUnlockedCard = level.AmountUnlockedCard;
     }
 }
 
@@ -19,6 +20,7 @@ public class LevelManager : MonoBehaviour
     private RewardCard rewardCard;
     private PlayerManager playerManager;
     private Transform canvasTransform;
+    [SerializeField] private int amountUnlockedCard;
 
     [SerializeField] private DataLevel_SO dataLevelSO;
 
@@ -31,6 +33,7 @@ public class LevelManager : MonoBehaviour
 
     public int CurNumberLevel { get => curNumberLevel; set => curNumberLevel = value; }
     public DataLevel_SO DataLevelSO { get => dataLevelSO; }
+    public int AmountUnlockedCard { get => amountUnlockedCard; set => amountUnlockedCard = value; }
 
     public void WinLevel()
     {
@@ -38,12 +41,16 @@ public class LevelManager : MonoBehaviour
         // Get card base on Level
         GameObject rewardCardIntance = Instantiate(this.rewardCard.GetRewardCard(this.CurNumberLevel), this.canvasTransform);
         rewardCardIntance.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        if (rewardCardIntance.CompareTag("BirdCardReward"))
+        {
+            this.AmountUnlockedCard++;
+        }
 
         // Increase Level Number
         this.curNumberLevel++;
 
         // Unlock card in collection
-        this.playerManager.UnlockNewPlantCard(this.CurNumberLevel);
+        this.playerManager.UnlockNewPlantCard(this.AmountUnlockedCard);
         
         //this.dataLevelSO.CurLevel = this.curNumberLevel;
         LevelDataHandler.instance.Save();
@@ -57,6 +64,7 @@ public class LevelManager : MonoBehaviour
     public void LoadData(LevelData data)
     {
         this.curNumberLevel = data.curNumberLevel;
+        this.amountUnlockedCard = data.amountUnlockedCard;
     }
 
     public void OnNextLevel()
