@@ -209,7 +209,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   lockObject: {fileID: 2543810634950868587}
   isChoosed: 0
-  isUnlocked: 1
+  isUnlocked: 0
 --- !u!1 &5426247187835739698
 GameObject:
   m_ObjectHideFlags: 0

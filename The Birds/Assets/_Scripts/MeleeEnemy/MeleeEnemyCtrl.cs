@@ -60,6 +60,7 @@ public class MeleeEnemyCtrl : EnemyCtrl
                 this.IsAttack = true;
                 this.animator.SetBool("IsAttack", true);
                 damageableObject.TakeDame(this.meleeEnemy_SO.damage);
+                AudioManager.Instance.Play("EnemyAttack");
             }
         }
     }

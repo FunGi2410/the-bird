@@ -399,6 +399,7 @@
 "Assets/_Scripts/Enemy/EnemyWaves.cs"
 "Assets/_Scripts/GodPea.cs"
 "Assets/_Scripts/IDamageable.cs"
+"Assets/_Scripts/LevelLoader.cs"
 "Assets/_Scripts/LivingEntity.cs"
 "Assets/_Scripts/Managers/DataLevel_SO.cs"
 "Assets/_Scripts/Managers/GameManager.cs"

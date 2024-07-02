@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    void ResumeGame()
+    public void ResumeGame()
     {
         this.IsPauseGame = false;
         Time.timeScale = 1;

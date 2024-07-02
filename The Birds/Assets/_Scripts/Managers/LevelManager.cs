@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +24,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int amountUnlockedCard;
 
     [SerializeField] private DataLevel_SO dataLevelSO;
+
+    public Animator transitionAnimator;
 
     private void Awake()
     {
@@ -69,6 +72,16 @@ public class LevelManager : MonoBehaviour
 
     public void OnNextLevel()
     {
+        GameManager.instance.ResumeGame();
+        StartCoroutine(LoadNextLevel());
+    }
+
+    IEnumerator LoadNextLevel()
+    {
+        this.transitionAnimator.SetTrigger("start");
+
+        yield return new WaitForSeconds(1f);
+
         SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
     }
 }

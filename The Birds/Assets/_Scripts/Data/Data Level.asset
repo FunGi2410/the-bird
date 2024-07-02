@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Data Level
   m_EditorClassIdentifier: 
   enemySpawnerLevelSO:
-  - {fileID: 11400000, guid: 0ff70a3e7df20fd4fb0c918b63bafc57, type: 2}
-  - {fileID: 11400000, guid: 28138cdf9da50d94790db8e17e259b9c, type: 2}
-  - {fileID: 11400000, guid: c7963e5c60bb9bd4b8aa0c23c3565776, type: 2}
-  - {fileID: 11400000, guid: 494d85c4dc6954741b8ba02aaffc556d, type: 2}
-  - {fileID: 11400000, guid: 14875030e04616c47af894c70aa9f445, type: 2}
+  - {fileID: 11400000, guid: 5494ffb85c64fa342ab9e385d1d6b612, type: 2}
+  - {fileID: 11400000, guid: 97ce534897ba262408d1f2deff00ebc8, type: 2}
+  - {fileID: 11400000, guid: 0d7b2a66a7c59cf449a239939d1fa65d, type: 2}
+  - {fileID: 11400000, guid: 0d7b2a66a7c59cf449a239939d1fa65d, type: 2}

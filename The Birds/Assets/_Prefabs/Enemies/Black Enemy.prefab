@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 0
   health: 0
-  meleeEnemy_SO: {fileID: 11400000, guid: 624ef95b680b28247a6f5eff16d86bd3, type: 2}
+  meleeEnemy_SO: {fileID: 11400000, guid: 06b23b025c0de734197a246c3d2bfff6, type: 2}
   attackPoint: {fileID: 7941097459748986915}
   playerLayer:
     serializedVersion: 2

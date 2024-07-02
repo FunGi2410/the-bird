@@ -13,11 +13,14 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject gameWinPanel;
+    [SerializeField] private GameObject optionPanel;
 
     private float halfHeightOfCanvas;
     private float halfWidthOfCanvas;
 
     [SerializeField] private RectTransform canvasRec;
+
+    private bool isOptionChoose;
 
     private void Start()
     {
@@ -47,9 +50,34 @@ public class UIManager : MonoBehaviour
         this.GameWinPanel.SetActive(true);
     }
 
+    public void DisplayOptionPanel()
+    {
+        this.isOptionChoose = !this.isOptionChoose;
+        this.optionPanel.SetActive(isOptionChoose);
+        if(isOptionChoose)
+            GameManager.instance.PauseGame();
+        else 
+            GameManager.instance.ResumeGame();
+    }
+
+    public void OnContinueBnt()
+    {
+        DisplayOptionPanel();
+    }
+
+    public void OnMenuBnt()
+    {
+        LoadMenuScene();
+    }
+
     public void LoadGameScene()
     {
         SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
+    }
+
+    public void LoadMenuScene()
+    {
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 
     public void ExitGame()

@@ -15,6 +15,7 @@ public class BulletFireStraight : Bullet
                 damageableObject.TakeDame(this.birdSO.damage);
             }
             ObjectPoolManager.instance.CoolObject(gameObject, this.bulletType);
+            AudioManager.Instance.Play("CollideEnemy");
         }
     }
 }

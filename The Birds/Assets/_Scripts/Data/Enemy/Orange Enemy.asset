@@ -17,7 +17,7 @@ MonoBehaviour:
   enemyID: 0
   type: 3
   attackRange: 0.35
-  speedWalk: 1
+  speedWalk: 0.5
   fireRate: 1
   damage: 10
-  health: 50
+  health: 100
