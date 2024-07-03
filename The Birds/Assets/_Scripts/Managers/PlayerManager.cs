@@ -12,6 +12,19 @@ public class PlayerManager : MonoBehaviour
         this.birdCardCollection = this.birdCardCollectionData.GetAllObjectsData();
     }
 
+    private void Start()
+    {
+    }
+
+    public void UnlockCard()
+    {
+        for (int i = 0; i <= LevelManager.instance.AmountUnlockedCard; i++)
+        {
+            this.UnlockNewPlantCard(i);
+            Debug.Log("Unlocked " + i);
+        }
+    }
+
     public List<GameObject> GetBirdCardCollection()
     {
         return this.birdCardCollection;

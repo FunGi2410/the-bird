@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioSource musicSource;
     public AudioClip bgMusic;
+
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider sfxSlider;
 
     public Sound[] sounds;
 
@@ -35,5 +39,18 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
+    }
+
+    public void SetMusicVolume()
+    {
+        musicSource.volume = musicSlider.value;
+    }
+    public void SetSFxVolume()
+    {
+        //sfxSource.volume = sfxSlider.value;
+        foreach (Sound s in sounds)
+        {
+            s.source.volume = sfxSlider.value;
+        }
     }
 }

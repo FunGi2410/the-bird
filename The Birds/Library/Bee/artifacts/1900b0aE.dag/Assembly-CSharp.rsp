@@ -381,6 +381,7 @@
 "Assets/_Scripts/Audio/Sound.cs"
 "Assets/_Scripts/Bullets/Bullet.cs"
 "Assets/_Scripts/Bullets/BulletFireStraight.cs"
+"Assets/_Scripts/Bullets/BulletFreeze.cs"
 "Assets/_Scripts/Cards/CardInBar.cs"
 "Assets/_Scripts/Cards/CardSelect.cs"
 "Assets/_Scripts/Cards/ObjectCard.cs"

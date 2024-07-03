@@ -12,11 +12,23 @@ public class TableSelection : MonoBehaviour
     [SerializeField] private Vector2 POS_INIT = new Vector2(-274.406f, 116f);
     [SerializeField] private List<GameObject> cardsInTable;
     [SerializeField] private Objects_SO birdCardCollectionData;
+
+    PlayerManager playerManager;
+
+    private void Awake()
+    {
+        this.playerManager = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerManager>();
+        this.anim = GetComponent<Animator>();
+    }
     void Start()
     {
-        this.anim = GetComponent<Animator>();
+        UnlockCard();
+    }
 
-        LoadCardIntoTable();
+    void UnlockCard()
+    {
+        this.playerManager.UnlockCard();
+        Invoke("LoadCardIntoTable", 1f);
     }
 
     public void OnStartGameLevel()

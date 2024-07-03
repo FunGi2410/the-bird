@@ -17,6 +17,8 @@ public class LevelData
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager instance;
+
     [SerializeField] private int curNumberLevel;
     private RewardCard rewardCard;
     private PlayerManager playerManager;
@@ -29,6 +31,8 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+
         this.rewardCard = GameObject.FindGameObjectWithTag("RewardCard").GetComponent<RewardCard>();
         this.playerManager = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerManager>();
         this.canvasTransform = GameObject.FindGameObjectWithTag("Canvas").transform;

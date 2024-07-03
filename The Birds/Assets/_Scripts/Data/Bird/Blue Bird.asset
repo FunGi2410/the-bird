@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   birdName: Red
   timming: 5
-  price: 100
+  price: 150
   fireRate: 1
   damage: 10
   health: 30
